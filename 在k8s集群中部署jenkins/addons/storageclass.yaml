@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata: 
+  name: fast
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: "http://192.168.1.110:8080"
+  clusterid: fd93fb4712a8cd19bd100182f02e318c
+  restuser: admin
+  restuserkey: heketi2019
+  volumetype: none
