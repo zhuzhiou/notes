@@ -1,29 +1,31 @@
-创建Namespace
+# 部署jenkins
+
+## 前提条件
+
+* 已安装的kubernetes集群
+* kubernetes集群支持动态卷
+
+## 创建Namespace
 ```
 # kubectl create ns jenkins
 ```
 
-创建StorageClass
-```
-# kubectl apply -f manifest/addons/sc.yaml
-```
-
-安装
+## 安装步骤
 ```
 # kubectl -n jenkins apply -f manifest/
 ```
 
-设置路由转发
+### 设置路由转发
 ```
 # kubectl -n jenkins port-forward --address 192.168.1.129 pods/jenkins-0 8000:8080
 ```
 
-查看密码
+### 查看密码
 ```
 # kubectl -n jenkins exec jenkins-0 -c jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
-解决jenkins下载插件慢的问题
+## 解决jenkins下载插件慢的问题
 
 找到jenkins_home卷后装载到本机
 ```
